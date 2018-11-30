@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercise4_2</title>
+</head>
+<body>
+    <div data-bind="template: { name: currentView}"></div>
+
+    <!-- post-->
+    <script type="text/html" id="post">
+        <div><button data-bind="click: back">Back</button></div>
+        <div data-bind="with: currentPost">
+            <h1 data-bind="text: title"></h1>
+            <h3>Date: <span data-bind="text: creationDate"></span></h3>
+            <h3>Score: <span data-bind="text: score"></span></h3>
+            <div data-bind="html: body"></div>
+            <div data-bind="if: $parent.hasAnswers">
+                <div><button data-bind="click: $parent.back">Back</button></div>
+                <h3>Answers:</h3>
+                <div data-bind="foreach: answers">
+                    <div style="background: lightgrey; margin: 20px; border: 1px solid black">
+                        <h4>Date: <span data-bind="text: creationDate"></span></h4>
+                        <h4>Score: <span data-bind="text: score"></span></h4>
+                        <div data-bind="html: body"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div><button data-bind="click: back">Back</button></div>
+    </script>
+
+    <!-- posts-->
+    <script type="text/html" id="posts">
+        <div>
+            <h1>Posts</h1>
+
+            <div data-bind="foreach: posts">
+                <div>
+                    <a href="" data-bind="click: $parent.showPost">
+                        <span data-bind="text: title"></span>
+                    </a>
+
+                </div>
+            </div>
+            <div style="margin-top: 20px">
+                <button data-bind="click: prev, enable: canPrev">Prev</button>
+                <button data-bind="click: next, enable: canNext">Next</button>
+            </div>
+        </div>
+
+    </script>
+    <script data-main="js/main.js" src="js/lib/requirejs/require.js"></script>
+</body>
+</html>

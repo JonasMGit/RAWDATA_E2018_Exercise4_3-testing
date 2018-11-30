@@ -28,6 +28,7 @@ namespace Exercise4_2.Controllers
                 });
             var total = _dataService.NumberOfQuestions();
             var pages = Math.Ceiling(total / (double)pageSize);
+            var cur = Url.Link(nameof(GetPosts), new { page, pageSize });
             var prev = page > 0 ? Url.Link(nameof(GetPosts), new { page = page - 1, pageSize }) : null;
             var next = page < pages - 1 ? Url.Link(nameof(GetPosts), new { page = page + 1, pageSize }) : null;
 
@@ -37,6 +38,7 @@ namespace Exercise4_2.Controllers
                 pages,
                 prev,
                 next,
+                cur,
                 items = posts
             };
 

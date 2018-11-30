@@ -2,8 +2,7 @@
 ( function() {
 	/* global loadTests: false */
 
-	var pathname = window.location.pathname,
-		path = pathname.slice( 0, pathname.lastIndexOf( "test" ) ),
+	var path = window.location.pathname.split( "test" )[ 0 ],
 		QUnit = window.QUnit || parent.QUnit,
 		require = window.require || parent.require,
 
