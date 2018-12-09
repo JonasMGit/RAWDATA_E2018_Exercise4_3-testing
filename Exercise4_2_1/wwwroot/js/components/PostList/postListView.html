@@ -1,0 +1,20 @@
+﻿
+<h1>Posts</h1>
+
+<div data-bind="foreach: posts">
+
+    <!--- <div data-bind="component: { name: $parent.currentComponent, params: {post-list: $data}}"></div>-->
+    <!--single post params-->
+    <div>
+        <div>
+            <a href="" data-bind="click: $parent.showPost">
+                <span data-bind="text: title"></span>
+            </a>
+        </div>
+    </div>
+    
+</div>
+<div style="margin-top: 20px">
+    <button data-bind="click: prev, enable: canPrev">Prev</button>
+    <button data-bind="click: next, enable: canNext">Next</button>
+</div>

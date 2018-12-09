@@ -1,16 +1,32 @@
-﻿define(['jquery', 'knockout'], function($, ko) {
+﻿define(['jquery', 'knockout', 'postman'], function($, ko, postman) {
 
-    var posts = ko.observableArray([]);
-    var canPrev = ko.observable(false);
+    //var currentComponent = ko.observable("post-list")
+    var selectedComponent = ko.observable("post-list")
+    var title = ko.observable("Posts")
+    var items = [
+        { name: "post", component: "post" },
+        {name : "postlist", component: "post-list"}
+    ]
+
+   //var selectedComponent = function (comp) {
+   //     currentComponent(comp)
+   // }
+
+    postman.subscribe("selectedComponent", function (item) {
+        selectedComponent(item);
+    })
+    //var selectedComponent = function ()
+    //var posts = ko.observableArray([]);
+ /*   var canPrev = ko.observable(false);
     var prevUrl = "";
     var curUrl = "";
     var canNext = ko.observable(false);
-    var nextUrl = "";
-    var currentView = ko.observable("posts");
-    var currentPost = ko.observable();
-    var hasAnswers = ko.observable(false);
+    var nextUrl = "";*/
+  //  var currentTemplate = ko.observable("post-list");
+    //var currentPost = ko.observable();
+    //var hasAnswers = ko.observable(false);
 
-    var getPost = function(url) {
+   /* var getPost = function(url) {
         $.getJSON(url, function (data) {
             $.getJSON(data.answers, function (answers) {
                 hasAnswers(answers && answers.length > 0);
@@ -23,9 +39,9 @@
     var showPost = function(post) {
         getPost(post.link);
         currentView("post");
-    };
+    };*/
 
-    var getPosts = function (url) {
+  /*  var getPosts = function (url) {
         url = url === undefined ? "api/posts" : url;
         $.getJSON(url, function (data) {
             curUrl = data.cur;
@@ -54,18 +70,22 @@
         currentView("posts");
     };
 
-    getPosts();
+    getPosts();*/
 
     return {
-        posts,
-        prev,
-        canPrev,
-        next,
-        canNext,
-        currentView,
-        currentPost,
-        showPost,
-        back,
-        hasAnswers
+       // currentComponent,
+        title,
+        items,
+        selectedComponent
+       // posts,
+       // prev,
+        //canPrev,
+       // next,
+       // canNext,
+       // currentView,
+       // currentPost,
+        //showPost,
+        //back,
+        //hasAnswers
     };
 });
