@@ -3,7 +3,7 @@
     //var currentComponent = ko.observable("post-list")
     var selectedComponent = ko.observable("post-list")
     var title = ko.observable("Posts")
-    var postLink= ko.observable("");
+    var selectedParams= ko.observable("");
     
    
 
@@ -11,17 +11,14 @@
    //     currentComponent(comp)
    // }
 
-    postman.subscribe("selectedComponent", function (item) {
-        selectedComponent(item);
+    postman.subscribe("selectedComponent", function (data) {
+        selectedParams(data.params);
+        selectedComponent(data.item);
     })
 
 
-    postman.subscribe("postLink", function (link) {
-        postLink(link);
+   
 
-    });
-
-    postman.publish("current", postLink);
     //var selectedComponent = function ()
     //var posts = ko.observableArray([]);
  /*   var canPrev = ko.observable(false);
@@ -83,7 +80,7 @@
        // currentComponent,
         title,
         selectedComponent,
-        postLink
+        selectedParams
        // posts,
        // prev,
         //canPrev,

@@ -6,7 +6,7 @@
         var currentPost = ko.observable();
         var currentComponent = ko.observable("post");
         var hasAnswers = ko.observable(false);
-        var curLink = ko.observable("");
+        var curLink = params.link;
         //var getPost = function(url) {
         //    $.getJSON(url, function (data) {
         //        $.getJSON(data.answers, function (answers) {
@@ -29,24 +29,21 @@
             });
         }
 
-        getPost(curLink());
+        getPost(curLink);
 
 
-        var postLink = function (som) {
-            curLink(som);
-        }
+        //var postLink = function (som) {
+        //    curLink(som);
+        //}
 
-        postman.subscribe("current", function (link) {
-            postLink(link);
-
-        });
+        
 
 
         //getPost(curUrl());
 
         var back = function () {
             ds.getPosts("api/posts");
-            postman.publish("selectedComponent", "post-list")
+            postman.publish("selectedComponent", { item: "post-list", params: {} });
 
         };
 
@@ -54,8 +51,8 @@
 
         return {
             getPost,
-            curLink,
-            postLink,
+            //curLink,
+            //postLink,
             currentPost,
             hasAnswers,
             back,

@@ -2,14 +2,11 @@
 
     return function (params) {
         var posts = ko.observableArray([]);
-        var currentPost = ko.observable();
         var currentComponent = ko.observable("post")
         var canPrev = ko.observable(false);
         var prevUrl = "";
-        var curUrl = "";
         var canNext = ko.observable(false);
         var nextUrl = "";
-            var hasAnswers = ko.observable(false);
 
 
 
@@ -36,9 +33,8 @@
         };
 
         var showPost = function (post) {
-            postman.publish("postLink", post.link);
-
-            postman.publish("selectedComponent", "post");
+            
+            postman.publish("selectedComponent", { item: "post", params: { link: post.link } });
 
             //currentComponent("post");
             //ds.getPost(post.link);
