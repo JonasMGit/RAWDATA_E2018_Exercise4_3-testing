@@ -1,6 +1,5 @@
 ﻿define(['jquery', 'knockout'], function($, ko) {
 
-    var hasAnswers = ko.observable(false);
 
   var getPosts = function (url, callback){
         url = url === undefined ? "api/posts" : url;

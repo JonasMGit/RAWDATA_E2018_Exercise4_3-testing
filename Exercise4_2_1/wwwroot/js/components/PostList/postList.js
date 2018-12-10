@@ -27,11 +27,6 @@
             });
         };
 
-
-        var gotoPost = function () {
-            postman.publish()
-        }
-
         var next = function () {
             getPosts(nextUrl);
         };
@@ -41,10 +36,12 @@
         };
 
         var showPost = function (post) {
-            postman.publish("selectedComponent", "post");
-            //currentComponent("post");
+            postman.publish("postLink", post.link);
 
-            ds.getPost(post.link);
+            postman.publish("selectedComponent", "post");
+
+            //currentComponent("post");
+            //ds.getPost(post.link);
             //answers
         };
 
